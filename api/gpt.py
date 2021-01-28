@@ -62,7 +62,7 @@ class GPT:
         self.output_suffix = output_suffix
         self.append_output_prefix_to_query = append_output_prefix_to_query
         self.stop = (output_suffix + input_prefix).strip()
-        
+
     def add_instruction(self, instruct):
         """Adds an instruction to the object."""
         self.instruction = instruct
@@ -73,7 +73,7 @@ class GPT:
         """
         assert isinstance(ex, Example), "Please create an Example object."
         self.examples[ex.get_id()] = ex
-                
+
 
     def delete_example(self, id):
         """Delete example with the specific id."""
@@ -92,7 +92,7 @@ class GPT:
         """Formats all examples to prime the model."""
         return "".join(
             [self.format_example(ex) for ex in self.examples.values()])
-    
+
     def get_instruction_text(self):
         """Formats instruction text to prime the model"""
         return self.instruction + self.output_suffix
