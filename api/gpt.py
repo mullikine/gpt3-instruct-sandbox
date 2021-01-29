@@ -80,23 +80,28 @@ class GPT:
         if id in self.examples:
             del self.examples[id]
 
+    # Not used
     def get_example(self, id):
         """Get a single example."""
         return self.examples.get(id, None)
 
+    # Not used
     def get_all_examples(self):
         """Returns all examples as a list of dicts."""
         return {k: v.as_dict() for k, v in self.examples.items()}
 
+    # Used in this file
     def get_prime_text(self):
         """Formats all examples to prime the model."""
         return "".join(
             [self.format_example(ex) for ex in self.examples.values()])
 
+    # Used externally
     def get_instruction_text(self):
         """Formats instruction text to prime the model"""
         return self.instruction + self.output_suffix
 
+    # Used in this file
     def get_engine(self):
         """Returns the engine specified for the API."""
         return self.engine
